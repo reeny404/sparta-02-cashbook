@@ -7,7 +7,7 @@ export function Record({ record }) {
       <div className="record-info">
         <span className="record-date">{record.date}</span>
         <span className="record-item boldText">
-          <Link to={`/assign-react-js/detail/${record.id}`}>
+          <Link to={`/detail/${record.id}`}>
             {record.item} - {record.description}
           </Link>
         </span>

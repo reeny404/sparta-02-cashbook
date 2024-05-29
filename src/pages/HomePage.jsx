@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as UUID_v4 } from "uuid";
-import LocalStorage, { KEY } from "../../../utils/LocalStorage";
 import { Input } from "../components/Input";
 import { RecordList } from "../components/RecordList";
 import { ADD_RECORD } from "../redux/reducers/spendings.reducer";
+import LocalStorage, { KEY } from "../utils/LocalStorage";
 import {
   HomePageWrppaer,
   SectionCashRecords,

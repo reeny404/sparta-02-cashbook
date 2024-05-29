@@ -46,7 +46,7 @@ export function DetailPage() {
                 description,
               },
             });
-            navigate("/assign-react-js/");
+            navigate("/");
           }}
         />
         <Button
@@ -56,7 +56,7 @@ export function DetailPage() {
               type: DELETE_RECORD,
               payload: { id: recordId },
             });
-            navigate("/assign-react-js/");
+            navigate("/");
           }}
         />
         <Button text="뒤로가기" handleClick={() => history.back()} />
