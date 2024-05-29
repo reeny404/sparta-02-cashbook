@@ -14,7 +14,7 @@ const BodyWeek2 = styled.div`
   box-sizing: border-box;
 `;
 
-export default function App() {
+export default function Week2() {
   return (
     <BodyWeek2 id="Week2">
       <Provider store={store}>
