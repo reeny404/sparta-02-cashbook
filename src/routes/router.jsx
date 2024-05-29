@@ -4,11 +4,11 @@ import { HomePage } from "../pages/HomePage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/assign-react-js/",
     element: <HomePage />,
   },
   {
-    path: "/detail/:recordId",
+    path: "/assign-react-js/detail/:recordId",
     element: <DetailPage />,
   },
 ]);
