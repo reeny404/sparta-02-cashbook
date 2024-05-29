@@ -25,13 +25,14 @@ export function DetailPage() {
     <DetailPageWrapper>
       <Input label="날짜" value={date} setValue={setDate} type="date" />
       <Input label="항목" value={item} setValue={setItem} />
-      <Input label="금액" value={amount} setValue={setAmount} />
+      <Input label="금액" value={amount} setValue={setAmount} type="number" />
       <Input label="내용" value={description} setValue={setDescription} />
       <div>
         <Button
           text="수정"
           handleClick={() => {
             updateRecord({
+              ...record,
               date,
               item,
               amount,

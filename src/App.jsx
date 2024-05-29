@@ -1,8 +1,8 @@
 import { RouterProvider } from "react-router-dom";
 import styled from "styled-components";
-import RecordsProvider from "./contexts/records.context";
 import "./reset.css";
 import router from "./routes/router";
+import RecordsProvider from "./contexts/records.context";
 
 const BodyWeek2 = styled.div`
   width: 100%;
@@ -15,10 +15,10 @@ const BodyWeek2 = styled.div`
 
 export default function App() {
   return (
-    <BodyWeek2 id="Week2">
-      <RecordsProvider>
+    <RecordsProvider>
+      <BodyWeek2 id="Week2">
         <RouterProvider router={router} />
-      </RecordsProvider>
-    </BodyWeek2>
+      </BodyWeek2>
+    </RecordsProvider>
   );
 }

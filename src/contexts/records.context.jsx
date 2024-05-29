@@ -3,9 +3,10 @@
 import { createContext, useContext, useState } from "react";
 import InitialRecords from "../InitialRecords";
 
-const recordsContext = createContext(InitialRecords);
+const initialValue = { records: [] };
+const RecordsContext = createContext(initialValue);
 
-export const useRecordsContext = () => useContext(recordsContext);
+export const useRecordsContext = () => useContext(RecordsContext);
 
 export default function RecordsProvider({ children }) {
   const [records, setRecords] = useState(InitialRecords);
@@ -15,6 +16,7 @@ export default function RecordsProvider({ children }) {
   };
 
   const updateRecord = (newRecord) => {
+    console.log(newRecord);
     setRecords([
       ...records.map((record) =>
         record.id === newRecord.id ? newRecord : record
@@ -27,10 +29,10 @@ export default function RecordsProvider({ children }) {
   };
 
   return (
-    <recordsContext.Provider
-      values={{ records, addRecord, updateRecord, deleteRecord }}
+    <RecordsContext.Provider
+      value={{ records, addRecord, updateRecord, deleteRecord }}
     >
       {children}
-    </recordsContext.Provider>
+    </RecordsContext.Provider>
   );
 }
