@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { v4 as UUID_v4 } from "uuid";
 import { Input } from "../components/Input";
 import { RecordList } from "../components/RecordList";
-import { useRecordsContext } from "../contexts/records.context";
 import LocalStorage, { KEY } from "../utils/LocalStorage";
 import {
   HomePageWrppaer,
@@ -12,13 +11,12 @@ import {
   StyleButtonSelectingMonth,
 } from "./HomePage.styled";
 
-export function HomePage() {
+export function HomePage({ records, addRecord }) {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [month, setMonth] = useState(Number(LocalStorage.get(KEY._02_MONTH)));
-  const { addRecord } = useRecordsContext();
 
   const handleSaveRecord = () => {
     if (!item || !amount) {
@@ -72,7 +70,7 @@ export function HomePage() {
         </div>
       </SectionSelectingMonth>
       <SectionCashRecords>
-        <RecordList month={month} />
+        <RecordList month={month} records={records} />
       </SectionCashRecords>
     </HomePageWrppaer>
   );

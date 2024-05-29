@@ -1,10 +1,7 @@
 import styled from "styled-components";
-import { useRecordsContext } from "../contexts/records.context";
 import { Record } from "./Record";
 
-export function RecordList({ month }) {
-  const { records } = useRecordsContext();
-  console.log(records);
+export function RecordList({ month, records }) {
   const list = month
     ? records.filter((record) => new Date(record.date).getMonth() + 1 === month)
     : records;

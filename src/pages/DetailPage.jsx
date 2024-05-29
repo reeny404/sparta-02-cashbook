@@ -2,13 +2,11 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import { useRecordsContext } from "../contexts/records.context";
 import { DetailPageWrapper } from "./DetailPage.styled";
 
-export function DetailPage() {
+export function DetailPage({ records, updateRecord, deleteRecord }) {
   const param = useParams();
   const recordId = param.recordId;
-  const { records, updateRecord, deleteRecord } = useRecordsContext();
   const record = records.find((data) => data.id === recordId) ?? {};
 
   const [date, setDate] = useState(record.date);
