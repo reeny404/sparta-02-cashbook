@@ -1,18 +1,14 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import {
-  DELETE_RECORD,
-  UPDATE_RECORD,
-} from "../redux/reducers/spendings.reducer";
+import { useRecordsContext } from "../contexts/records.context";
 import { DetailPageWrapper } from "./DetailPage.styled";
 
 export function DetailPage() {
   const param = useParams();
   const recordId = param.recordId;
-  const records = useSelector((state) => state.spendings);
+  const { records, updateRecord, deleteRecord } = useRecordsContext();
   const record = records.find((data) => data.id === recordId) ?? {};
 
   const [date, setDate] = useState(record.date);
@@ -20,7 +16,6 @@ export function DetailPage() {
   const [amount, setAmount] = useState(record.amount);
   const [description, setDescription] = useState(record.description);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   if (!record) {
     return <div>조회할 수 없는 데이터입니다. ({recordId}).</div>;
@@ -36,15 +31,11 @@ export function DetailPage() {
         <Button
           text="수정"
           handleClick={() => {
-            dispatch({
-              type: UPDATE_RECORD,
-              payload: {
-                ...record,
-                date,
-                item,
-                amount,
-                description,
-              },
+            updateRecord({
+              date,
+              item,
+              amount,
+              description,
             });
             navigate("/");
           }}
@@ -52,10 +43,7 @@ export function DetailPage() {
         <Button
           text="삭제"
           handleClick={() => {
-            dispatch({
-              type: DELETE_RECORD,
-              payload: { id: recordId },
-            });
+            deleteRecord(recordId);
             navigate("/");
           }}
         />

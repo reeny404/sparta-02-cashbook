@@ -1,7 +1,6 @@
-import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 import styled from "styled-components";
-import store from "./redux/store";
+import RecordsProvider from "./contexts/records.context";
 import "./reset.css";
 import router from "./routes/router";
 
@@ -17,9 +16,9 @@ const BodyWeek2 = styled.div`
 export default function App() {
   return (
     <BodyWeek2 id="Week2">
-      <Provider store={store}>
+      <RecordsProvider>
         <RouterProvider router={router} />
-      </Provider>
+      </RecordsProvider>
     </BodyWeek2>
   );
 }
